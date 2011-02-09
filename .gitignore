@@ -3,3 +3,7 @@ target
 out
 .idea/workspace.xml
 s101plugin.state
+.idea
+*.iml
+*.ipr
+*.iws

@@ -27,12 +27,9 @@ import static org.junit.Assert.assertThat;
 public class CoffeeScriptCompilerTest {
     @Test
     public void shouldCompileWithDefaultOptions() throws JCoffeeScriptCompileException {
-        assertThat(compiling("a = 1"),
-                allOf(
-                        containsString("a = 1"),
-                        containsFunctionWrapper()
-                )
-        );
+        String js = compiling("a = 1");
+        assertThat(js, containsString("a = 1"));
+        assertThat(js, containsFunctionWrapper());
     }
 
     @Test
@@ -41,7 +38,7 @@ public class CoffeeScriptCompilerTest {
     }
 
     private Matcher<String> containsFunctionWrapper() {
-        return allOf(startsWith("(function() {\n"), endsWith("\n}).call(this);\n"));
+        return allOf(startsWith("(function() {\\n"), endsWith("\\n}).call(this);\\n"));
     }
 
     private String compiling(String coffeeScriptSource, Option... options) throws JCoffeeScriptCompileException {
