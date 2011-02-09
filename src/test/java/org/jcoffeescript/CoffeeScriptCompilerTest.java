@@ -38,7 +38,7 @@ public class CoffeeScriptCompilerTest {
     }
 
     private Matcher<String> containsFunctionWrapper() {
-        return allOf(startsWith("(function() {\\n"), endsWith("\\n}).call(this);\\n"));
+        return allOf(startsWith("(function() {\n"), endsWith("\n}).call(this);\n"));
     }
 
     private String compiling(String coffeeScriptSource, Option... options) throws JCoffeeScriptCompileException {
